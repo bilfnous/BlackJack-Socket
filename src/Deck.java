@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 //implements Serializable
+
 public class Deck implements Serializable{
     ArrayList<Card> cardsList = new ArrayList<Card>();  
     public Deck(){
@@ -64,7 +65,7 @@ public class Deck implements Serializable{
         Collections.shuffle(cardsList);                
     }
     
-    public ArrayList getDeck(){
+    public ArrayList<Card> getDeck(){
         return cardsList;
     }
     

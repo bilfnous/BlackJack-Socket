@@ -6,7 +6,6 @@
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ListIterator;
 import java.util.*;
 
@@ -30,9 +29,9 @@ class Server {
             ObjectOutputStream remoteOutput = new ObjectOutputStream(socket.getOutputStream());
 
             Deck deck = new Deck();
-            ArrayList deckCards = new ArrayList<Card>();
+            ArrayList<Card> deckCards = new ArrayList<Card>();
             deckCards = deck.getDeck();
-	  ListIterator<Deck> iterator = deckCards.listIterator();
+	        ListIterator<Card> iterator = deckCards.listIterator();
  
           // System.out.println(Arrays.toString(deckCards.toArray())); 
             while(true) {
@@ -44,13 +43,13 @@ class Server {
                     if(iterator.hasNext())
                         remoteOutput.writeObject(iterator.next());
                 }
-		else if(message.equals("shuffle")){
-		   Collections.shuffle(deckCards);	
-		}
-		else if( Integer.parseInt(message) ==  1 || Integer.parseInt(message) == 11 ){
-		   System.out.println("your ace value is 1 or 11");
-		}
-	 }
+                else if(message.equals("shuffle")){
+                Collections.shuffle(deckCards);	
+                }
+                else if( Integer.parseInt(message) ==  1 || Integer.parseInt(message) == 11 ){
+                System.out.println("your ace value is 1 or 11");
+                }
+	        }
       } catch(IOException ex) { ex.printStackTrace(); }
    }
 }
